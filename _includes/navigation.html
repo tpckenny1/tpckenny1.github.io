@@ -1,0 +1,68 @@
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form action="{{ site.baseurl }}/search" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" type="search" name="q" id="search-input" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="search" name="q" id="search-input" class="form-control td-search-input bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+               <a class="gh-source" data-gh-source="github" href="{{ site.repo }}" title="Go to repository" data-md-state="done"><i class="fab fa-github fa-2x" style="margin-top:8px; float:left"></i>
+		    <span style="margin-left:10px">{{ site.github_user }}/{{ site.github_repo }}</span><br>
+		  <em><li style="font-size:0.8rem; margin-left:10px;margin-right:5px;float:left;display:inline-block" id='stars'></li> <li style="font-size:0.8rem;float:left;display:inline-block" id="forks"></li></em></a>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+<script>
+$(document).ready(function() {
+  var url = "https://api.github.com/search/repositories?q={{ site.github_user }}/{{ site.github_repo }}";
+  fetch(url, { 
+      headers: {"Accept":"application/vnd.github.preview"}
+  }).then(function(e) {
+    return e.json()
+  }).then(function(r) {
+     console.log(r.items[0])
+     stars = r.items[0]['stargazers_count']
+     forks = r.items[0]['forks_count']
+     $('#stars').text(stars + " Stars")
+     $('#forks').text(forks + " Forks")
+  });
+});
+</script>

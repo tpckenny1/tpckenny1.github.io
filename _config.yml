@@ -1,0 +1,113 @@
+# --- General options --- #
+
+# url is the full website URL
+# baseurl is the website's URL without the hostname
+url: "https://vsoch.github.io"
+baseurl: "/sb-admin-jekyll"
+
+# Name of website
+title: SBA Jekyll
+version: 1
+
+# Short description of your site
+description: Startbootstrap Theme (Sb admin) for Jekyll
+github_user: vsoch
+github_repo: sb-admin-jekyll
+repo: https://www.github.com/vsoch/sb-admin-jekyll
+
+# --- Navigation bar options --- #
+
+# Image to show in the navigation bar - image must be a square (width = height)
+# Remove this parameter if you don't want an image in the navbar
+avatar: "/assets/img/avatar-icon.png"
+
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+  projects:
+    output: true
+    permalink: /:collection/:path/
+
+
+defaults:
+  - scope:
+      path: "_docs"
+      type: "docs"
+    values:
+      layout: page
+  - scope:
+      path: "_projects"
+      type: "projects"
+    values:
+      layout: project
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  -
+    scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+
+
+# --- Footer options --- #
+
+# Change all these values or delete the ones you don't want.
+# Important: you must keep the "name" parameter, everything else you can remove
+author:
+  name: "vsoch"
+  github: vsoch
+  twitter: vsoch
+
+# Select which share links to show in posts
+share-links-active:
+  twitter: true
+  facebook: false
+  google: false
+  linkedin: false
+
+# --- Web Statistics Section --- #
+
+# Fill in your Google Analytics ID to track your website using GA
+# google_analytics: "UA-XXXXXXXXXX"
+
+# Excerpt Word Length
+# Truncates the excerpt to the specified number of words on the index page
+excerpt_length: 50
+
+# Output options (more information on Jekyll's site)
+timezone: "America/New_York"
+markdown: kramdown
+highlighter: rouge
+permalink: /:year-:month-:day-:title/
+paginate: 5
+
+kramdown:
+  input: GFM
+
+# Use tags index page and make tags on each post clickable
+link-tags: true
+
+# Exclude these files from production site
+exclude:
+  - _site
+  - CHANGELOG.md
+  - CNAME
+  - Dockerfile
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - tests
+  - vendor
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
