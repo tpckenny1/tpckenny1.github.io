@@ -7,17 +7,32 @@
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
 <script>
+// $(document).ready( function () {
+//     var table = $('#tableAjax').DataTable({
+//         ajax: {
+//             url: 'https://api.fda.gov/device/510k.json?search=product_code:NBW&limit=100',
+//             dataSrc: 'results',
+//             cache: true,
+//         },
+//         columns: [
+//             {data: 'city'},
+//             {data: 'advisory_committee_description'},
+//             {data: 'device_name'}
+//         ]
+//     });
+// } );
+
 $(document).ready( function () {
     var table = $('#tableAjax').DataTable({
         ajax: {
-            url: 'https://api.fda.gov/device/510k.json?search=product_code:NBW&limit=100',
-            dataSrc: 'results',
+            url: 'https://script.google.com/macros/s/AKfycbxls7PoAYmxLvFC3x1IcpHcvYnLLilCZKABIA-ud2N9Qu5c2wUCxa4YfXdlyq6BBqnP/exec',
+            dataSrc: 'data',
             cache: true,
         },
         columns: [
-            {data: 'city'},
-            {data: 'advisory_committee_description'},
-            {data: 'device_name'}
+            {data: 'name'},
+            {data: 'position'},
+            {data: 'salary'}
         ]
     });
 } );
