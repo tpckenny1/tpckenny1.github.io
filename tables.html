@@ -7,19 +7,25 @@
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
 <script>
-$('#tableAjax').DataTable({
-    "ajax": {
+$(document).ready(function () {
+    $.ajax({
         "url": "https://script.google.com/macros/s/AKfycbxkKCiCF19YkFHSgkP0YpSGPITYKuHZBhknji5Ay4WFiBfJN7eEcxoinPvzK7XIrOOv/exec",
-        "dataSrc": 'data',
-    },
-    "columns": [ 
-        { data: 'name'},
-        { data: 'position'},
-        { data: 'salary'},
-        { data: 'start_date'},
-        { data: 'office'},
-        { data: 'extn'},
-    ],
+        "type": "GET",
+        "datatype": 'json',
+        "success": function (data) {
+            data = JSON.parse(data);
+            $('#tableAjax').DataTable({
+                "data": data.data,
+                "columns": [ 
+                    { data: 'name'},
+                    { data: 'position'},
+                    { data: 'salary'},
+                    { data: 'start_date'},
+                    { data: 'office'},
+                    { data: 'extn'},
+                ],
+            });
+        }
 });
 </script>
 <table id="tableAjax" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%"></table>
