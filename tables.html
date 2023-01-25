@@ -20,12 +20,6 @@ $('#tableAjax').DataTable({
         { data: 'start_date',title: "開始工作日" },
         { data: 'office',title: "辦公室" },
         { data: 'extn',title: "分機" },
-        { data: null ,title: "操作功能",
-        render: function (data, type, row) {
-            return '<button type="button" class="btn btn-warning btn-sm">編輯</button> ' +
-                    '<button type="button" class="btn btn-danger btn-sm">刪除</button>'
-            } ,
-        },
     ],
     "columnDefs":[
     {
