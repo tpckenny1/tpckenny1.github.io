@@ -8,18 +8,18 @@
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
 <script>
 $(document).ready( function () {
-  var table = $('#tableAjax').DataTable({
-    ajax: {
-      url: 'https://api.fda.gov/device/510k.json?search=product_code:NBW&limit=100',
-      dataSrc: 'results',
-      cache: true,
-    },
-    columns: [
-      {data: 'city'},
-      {data: 'advisory_committee_description'},
-      {data: 'device_names'}
-    ]
-  });
+    var table = $('#tableAjax').DataTable({
+        ajax: {
+            url: 'https://api.fda.gov/device/510k.json?search=product_code:NBW&limit=100',
+            dataSrc: 'results',
+            cache: true,
+        },
+        columns: [
+            {data: 'city'},
+            {data: 'advisory_committee_description'},
+            {data: 'device_name'}
+        ]
+    });
 } );
 
 // $(document).ready(function () {
