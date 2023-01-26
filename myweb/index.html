@@ -11,6 +11,18 @@
     
     <!-- W3 Library -->
     <script src="https://www.w3schools.com/lib/w3.js"></script>
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
     
     <title>Hello, world!</title>
 
@@ -72,7 +84,8 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <div w3-include-html="tables.html"></div>
+        <!-- <div w3-include-html="tables.html"></div> -->
+        <table id="tableAjax" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%"></table>
       </div>
 
     </div> <!-- /container -->
@@ -80,6 +93,22 @@
     <!-- Optional JavaScript -->
     <script>
       w3.includeHTML();
+    </script>
+    <script>
+      $(document).ready( function () {
+          var table = $('#tableAjax').DataTable({
+              ajax: {
+                  url: 'https://script.google.com/macros/s/AKfycbxls7PoAYmxLvFC3x1IcpHcvYnLLilCZKABIA-ud2N9Qu5c2wUCxa4YfXdlyq6BBqnP/exec',
+                  dataSrc: 'data',
+                  cache: true,
+              },
+              columns: [
+                  {data: 'name', title: "Name"},
+                  {data: 'position', title: "Position"},
+                  {data: 'salary', title: "Salary"}
+              ]
+          });
+      } );
     </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
