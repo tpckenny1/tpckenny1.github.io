@@ -24,6 +24,23 @@
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
     
+    <script>
+      $(document).ready( function () {
+          var table = $('#tableAjax').DataTable({
+              ajax: {
+                  url: 'https://script.google.com/macros/s/AKfycbxls7PoAYmxLvFC3x1IcpHcvYnLLilCZKABIA-ud2N9Qu5c2wUCxa4YfXdlyq6BBqnP/exec',
+                  dataSrc: 'data',
+                  cache: true,
+              },
+              columns: [
+                  {data: 'name', title: "Name"},
+                  {data: 'position', title: "Position"},
+                  {data: 'salary', title: "Salary"}
+              ]
+          });
+      } );
+    </script>
+
     <title>Hello, world!</title>
 
     <!-- Custom styles for this template -->
@@ -91,25 +108,10 @@
     </div> <!-- /container -->
 
     <!-- Optional JavaScript -->
-    <script>
+    <!-- <script>
       w3.includeHTML();
-    </script>
-    <script>
-      $(document).ready( function () {
-          var table = $('#tableAjax').DataTable({
-              ajax: {
-                  url: 'https://script.google.com/macros/s/AKfycbxls7PoAYmxLvFC3x1IcpHcvYnLLilCZKABIA-ud2N9Qu5c2wUCxa4YfXdlyq6BBqnP/exec',
-                  dataSrc: 'data',
-                  cache: true,
-              },
-              columns: [
-                  {data: 'name', title: "Name"},
-                  {data: 'position', title: "Position"},
-                  {data: 'salary', title: "Salary"}
-              ]
-          });
-      } );
-    </script>
+    </script> -->
+    
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
