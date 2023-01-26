@@ -11,7 +11,10 @@ $(document).ready(function() {
             cache: true,
         },
         columns: [
-            {data: 'name', title: "Name"},
+            {data: 'name', title: "Name", 
+              render: function (data, type, row) {
+                return '<a href="" target="_blank">'+data+'</a>'
+            }},
             {data: 'position', title: "Position"},
             {data: 'salary', title: "Salary"}
         ]
