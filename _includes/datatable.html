@@ -3,7 +3,19 @@
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <script>
 $(document).ready(function() {
-  $('#{{ include.title | slugify }}').DataTable();
+  // $('#{{ include.title | slugify }}').DataTable();
+  $('#{{ include.title | slugify }}').DataTable({
+        ajax: {
+            url: 'https://script.google.com/macros/s/AKfycbxls7PoAYmxLvFC3x1IcpHcvYnLLilCZKABIA-ud2N9Qu5c2wUCxa4YfXdlyq6BBqnP/exec',
+            dataSrc: 'data',
+            cache: true,
+        },
+        columns: [
+            {data: 'name', title: "Name"},
+            {data: 'position', title: "Position"},
+            {data: 'salary', title: "Salary"}
+        ]
+    });
 });</script>
 {% capture datafile %}{{ include.file }}{% endcapture %}
 <div class="card shadow mb-4">
@@ -12,12 +24,13 @@ $(document).ready(function() {
 </div>
 <div class="card-body">
   <div class="table-responsive">
-    <table class="table table-bordered" id="{{ include.title | slugify }}" width="100%" cellspacing="0">
+    <!-- <table class="table table-bordered" id="{{ include.title | slugify }}" width="100%" cellspacing="0">
     <thead>{% for entry in site.data[datafile] %}{% if forloop.first %}<tr>{% for field in entry %}<th>{{ field[0] }}</th>{% endfor %}</tr>{% endif %}{% endfor %}</thead>
       <tfoot><tr>{% for entry in site.data[datafile] %}{% if forloop.first %}{% for field in entry %}<th>{{ field[0] }}</th>{% endfor %}{% endif %}{% endfor %}</tr></tfoot>
    <tbody>{% for entry in site.data[datafile] %}<tr>{% for field in entry %}<td>{{ field[1] }}</td>{% endfor %}</tr>{% endfor %}
    </tbody>
-   </table>
+   </table> -->
+   <table class="table table-bordered" id="{{ include.title | slugify }}" width="100%" cellspacing="0"></table>
    </div>
   </div>
 </div>
