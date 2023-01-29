@@ -1,13 +1,15 @@
 - title: Home
   icon: fa-tachometer-alt
   url: /
-- title: DataTables
-  icon: fa-table
-  children:
-  - title: CollegeStudents
-    url: docs/c/
-  - title: HighSchoolStudents
-    url: docs/highschool/
+- title: Interface
+  links:
+  - title: DataTables
+    icon: fa-table
+    children:
+    - title: CollegeStudents
+      url: docs/college/
+    - title: HighSchoolStudents
+      url: docs/highschool/
 - title: Charts
   icon: fa-chart-area
   url: docs/charts/
