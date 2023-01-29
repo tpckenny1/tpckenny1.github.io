@@ -13,7 +13,10 @@ $(document).ready(function() {
         columns: [
             {data: 'Student Name', title: "Student Name", 
               render: function (data, type, row) {
-                return '<a href="" target="_blank">'+data+'</a>'
+                // return '<a href="" target="_blank">'+data+'</a>'
+                return '<form name="form1" action = "test1.html" method="POST" >' + 
+                  '<input type="text" id="action" name="action" value="get"/>' + 
+                  '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
             }},
             {data: 'Readiness', title: "Readiness"},
             {data: 'CMJ atigue', title: "CMJ atigue"},
