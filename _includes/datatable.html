@@ -5,9 +5,10 @@
 $(document).ready(function() {
   $('#{{ include.title | slugify }}').DataTable({
         ajax: {
-            url: 'https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec',
-            dataSrc: 'data',
-            cache: true,
+          type: 'POST',
+          url: 'https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec',
+          dataSrc: 'data',
+          cache: true,
         },
         columns: [
             {data: 'Student Name', title: "Student Name", 
