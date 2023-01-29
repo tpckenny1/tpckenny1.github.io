@@ -7,6 +7,9 @@
 - title: Charts
   icon: fa-chart-area
   url: docs/charts/
+- title: Tables2
+  icon: fa-table
+  url: docs/tables2/
 # - title: Interface
 #   links:
 #     - title: Components
