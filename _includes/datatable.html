@@ -11,12 +11,19 @@ $(document).ready(function() {
             cache: true,
         },
         columns: [
-            {data: 'name', title: "Name", 
+            {data: 'Student Name', title: "Student Name", 
               render: function (data, type, row) {
                 return '<a href="" target="_blank">'+data+'</a>'
             }},
-            {data: 'position', title: "Position"},
-            {data: 'salary', title: "Salary"}
+            {data: 'Readiness', title: "Readiness"},
+            {data: 'CMJ atigue', title: "CMJ atigue"},
+            {data: 'DJ Fatigue', title: "DJ Fatigue"},
+            {data: 'UpperBody Fatigue', title: "UpperBody Fatigue"},
+            {data: 'fatigue', title: "fatigue"},
+            {data: 'stress', title: "stress"},
+            {data: 'muscle soreness', title: "muscle soreness"},
+            {data: 'sleep status', title: "sleep status"}
+            
         ]
     });
 });</script>
