@@ -19,6 +19,10 @@ $(document).ready(function() {
   fillDatatable("search_by_date", "2023-02-18")
 });
 
+function myFunction(){
+  console.log($('#selected_date').val());
+}
+
 function fillDatatable(type="", date=""){
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
@@ -58,7 +62,7 @@ function fillDatatable(type="", date=""){
     <h6 class="m-0 font-weight-bold text-primary">{{ include.title }}</h6>
     <div>
       <label>Date:
-        <input type="date" id="selected_date" name="selected_date">
+        <input type="date" id="selected_date" name="selected_date" onchange="myFunction()">
       </label>
     </div>
   </div>
