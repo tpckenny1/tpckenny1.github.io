@@ -9,6 +9,10 @@ $(document).ready(function() {
           url: 'https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec',
           dataSrc: 'data',
           cache: true,
+          data: {
+            type: 'search_by_date',
+            date: '2023-02-18'
+          },
         },
         columns: [
             {data: 'Student Name', title: "Student Name", 
