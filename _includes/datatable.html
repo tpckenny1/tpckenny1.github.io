@@ -20,10 +20,10 @@ $(document).ready(function() {
   { 
     type: "search_by_date",
     date: "2023-02-18" 
-  }).then((data) => {
-    console.log(data); // JSON data parsed by `data.json()` call
+  }).then((respData) => {
+    console.log(respData); // JSON data parsed by `data.json()` call
     $('#{{ include.title | slugify }}').DataTable({
-        data: data,
+        data: respData['data'],
         columns: [
           {data: 'Student Name', title: "Student Name", 
             render: function (data, type, row) {
