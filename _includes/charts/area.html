@@ -102,9 +102,10 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 
 function stripDate(isoDateString){
-  let dateVal = Math.floor((isoDateString.valueOf()+(8*3600000))/86400000);
-  let newDate = new Date(dateVal);
-  let newIsoDateString = newDate.toISOString().slice(0,10)
+  let oldDate = new Date(isoDateString);
+  // let dateVal = Math.floor((isoDateString.valueOf()+(8*3600000))/86400000);
+  // let newDate = new Date(dateVal);
+  let newIsoDateString = oldDate.toISOString().slice(0,10)
   console.log(newIsoDateString);
   return newIsoDateString
 }
