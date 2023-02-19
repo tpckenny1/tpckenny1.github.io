@@ -115,7 +115,7 @@ postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT64
   name: "何亞璇" 
 }).then((respData) => {
   // console.log(respData);
-  let labels = respData['data'].map(i => stripDate(`${i.Date}`) );
+  let dates = respData['data'].map(i => stripDate(i.Date) );
   let readiness = respData['data'].map(i => `${i.Readiness}`);
   console.log(labels) 
   console.log(readiness)
@@ -144,7 +144,7 @@ postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT64
       //   pointBorderWidth: 2,
       //   data: [{% for point in points %}{{ point }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
       // }{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
-      labels: labels,
+      labels: dates,
       datasets: [{
         label: "Readiness",
         lineTension: 0.3,
