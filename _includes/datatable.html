@@ -2,40 +2,48 @@
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <script>
+async function postData(url = '', data = {}) {
+  const response = await fetch(url, {
+    redirect: "follow",
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+  });
+  return response.json();
+}
+
+
 $(document).ready(function() {
-  $('#{{ include.title | slugify }}').DataTable({
-        ajax: {
-          type: 'POST',
-          url: 'https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec',
-          dataSrc: 'data',
-          redirect: "follow",
-          body: JSON.stringify({
-            "type": "search_by_date",
-            "date": "2023-02-18"
-          }),
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8",
-          }
-        },
+  postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
+  { 
+    type: "search_by_date",
+    date: "2023-02-18" 
+  }).then((data) => {
+    console.log(data); // JSON data parsed by `data.json()` call
+    $('#{{ include.title | slugify }}').DataTable({
+        data: data,
         columns: [
-            {data: 'Student Name', title: "Student Name", 
-              render: function (data, type, row) {
-                // return '<a href="" target="_blank">'+data+'</a>'
-                return '<form name="form1" action="test1.html" method="POST" >' + 
-                  '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
-                  '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
-            }},
-            {data: 'Readiness', title: "Readiness"},
-            {data: 'CMJ atigue', title: "CMJ atigue"},
-            {data: 'DJ Fatigue', title: "DJ Fatigue"},
-            {data: 'UpperBody Fatigue', title: "UpperBody Fatigue"},
-            {data: 'fatigue', title: "fatigue"},
-            {data: 'stress', title: "stress"},
-            {data: 'muscle soreness', title: "muscle soreness"},
-            {data: 'sleep status', title: "sleep status"}
-            
+          {data: 'Student Name', title: "Student Name", 
+            render: function (data, type, row) {
+              // return '<a href="" target="_blank">'+data+'</a>'
+              return '<form name="form1" action="test1.html" method="POST" >' + 
+                '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
+                '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
+          }},
+          {data: 'Readiness', title: "Readiness"},
+          {data: 'CMJ atigue', title: "CMJ atigue"},
+          {data: 'DJ Fatigue', title: "DJ Fatigue"},
+          {data: 'UpperBody Fatigue', title: "UpperBody Fatigue"},
+          {data: 'fatigue', title: "fatigue"},
+          {data: 'stress', title: "stress"},
+          {data: 'muscle soreness', title: "muscle soreness"},
+          {data: 'sleep status', title: "sleep status"}
+              
         ]
-    });
+      });
+  });
 });</script>
 {% capture datafile %}{{ include.file }}{% endcapture %}
 <div class="card shadow mb-8">
