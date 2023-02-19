@@ -20,7 +20,9 @@ $(document).ready(function() {
 });
 
 function myFunction(){
-  console.log($('#selected_date').val());
+  let selected_date = $('#selected_date').val().toString();
+  console.log(selected_date);
+  fillDatatable("search_by_date", selected_date)
 }
 
 function fillDatatable(type="", date=""){
