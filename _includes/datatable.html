@@ -19,7 +19,7 @@ $(document).ready(function() {
   fillDatatable("search_by_date", "2023-02-18")
 });
 
-function myFunction(){
+function overwriteDatatable(){
   let selected_date = $('#selected_date').val().toString(); 
   console.log(selected_date);
   destroyDatatable();
@@ -70,7 +70,7 @@ function fillDatatable(type="", date=""){
     <h6 class="m-0 font-weight-bold text-primary">{{ include.title }}</h6>
     <div>
       <label>Date:
-        <input type="date" id="selected_date" name="selected_date" onchange="myFunction()">
+        <input type="date" id="selected_date" name="selected_date" onchange="overwriteDatatable()">
       </label>
     </div>
   </div>
