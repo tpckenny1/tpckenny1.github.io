@@ -20,9 +20,15 @@ $(document).ready(function() {
 });
 
 function myFunction(){
-  let selected_date = $('#selected_date').val().toString();
+  let selected_date = $('#selected_date').val().toString(); 
   console.log(selected_date);
+  destroyDatatable();
   fillDatatable("search_by_date", selected_date)
+}
+
+function destroyDatatable(){
+  let dt = $('#{{ include.title | slugify }}').DataTable();
+  dt.destroy();
 }
 
 function fillDatatable(type="", date=""){
