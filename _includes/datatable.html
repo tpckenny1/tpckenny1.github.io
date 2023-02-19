@@ -2,7 +2,7 @@
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <script>
-async function postData(url = '', data = {}) {
+async function postData(url="", data={}) {
   const response = await fetch(url, {
     redirect: "follow",
     method: "POST",
@@ -16,21 +16,25 @@ async function postData(url = '', data = {}) {
 
 
 $(document).ready(function() {
+  fillDatatable("search_by_date", "2023-02-18")
+});
+
+function fillDatatable(type="", date=""){
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
-    type: "search_by_date",
-    date: "2023-02-18" 
+    type: type,
+    date: date 
   }).then((respData) => {
     console.log(respData); // JSON data parsed by `data.json()` call
     $('#{{ include.title | slugify }}').DataTable({
-        data: respData['data'],
-        columns: [
-          {data: 'Student Name', title: "Student Name", 
-            render: function (data, type, row) {
-              // return '<a href="" target="_blank">'+data+'</a>'
-              return '<form name="form1" action="test1.html" method="POST" >' + 
-                '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
-                '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
+      data: respData['data'],
+      columns: [
+        {data: 'Student Name', title: "Student Name", 
+        render: function (data, type, row) {
+          // return '<a href="" target="_blank">'+data+'</a>'
+          return '<form name="form1" action="test1.html" method="POST" >' + 
+            '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
+            '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
           }},
           {data: 'Readiness', title: "Readiness"},
           {data: 'CMJ atigue', title: "CMJ atigue"},
@@ -40,26 +44,29 @@ $(document).ready(function() {
           {data: 'stress', title: "stress"},
           {data: 'muscle soreness', title: "muscle soreness"},
           {data: 'sleep status', title: "sleep status"}
-              
+          
         ]
       });
-  });
-});</script>
-{% capture datafile %}{{ include.file }}{% endcapture %}
-<div class="card shadow mb-8">
-  <div class="card-header py-3  d-flex flex-row align-items-center justify-content-between">
-    <h6 class="m-0 font-weight-bold text-primary">{{ include.title }}</h6>
-    <div>
-      <label>
+    });
+}
+    
+    
+</script>
+    {% capture datafile %}{{ include.file }}{% endcapture %}
+    <div class="card shadow mb-8">
+      <div class="card-header py-3  d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">{{ include.title }}</h6>
+        <div>
+          <label>
         Date:
         <input type="date" id="selected_date" name="selected_date">
-      </label>
-    </div>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-bordered" id="{{ include.title | slugify }}" width="100%" cellspacing="0"></table>
-    </div>
-  </div>
+        </label>
+        </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="{{ include.title | slugify }}" width="100%" cellspacing="0"></table>
+            </div>
+            </div>
 </div>
   
