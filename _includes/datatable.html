@@ -49,11 +49,11 @@ function fillDatatable(type="", date=""){
         }},
         {data: 'Readiness', title: "Readiness", render: function (data, type, row) {
           if (data <= 0.5){
-            readiness_status = 🔴; // Red
+            readiness_status = '<p>🔴</p>'; // Red
           } else if ((data > 0.5) && (data < 0.8)){
-            readiness_status = 🟡; // Yellow
+            readiness_status = '<p>🟡</p>'; // Yellow
           } else {
-            readiness_status = 🟢; // Green
+            readiness_status = '<p>🟢</p>'; // Green
           }
           return readiness_status
         }},
