@@ -2,28 +2,26 @@
 {% assign datasets = include.datasets | split: "|" %}
 {% if include.width %}{% else %}{% assign include.width = 12 %}{% endif %}{% assign width_large = include.width | plus: 1 %}
 
-<div class="col-xl-{{ include.width }} col-lg-{{ width_large }}">
-    <div class="card shadow mb-{{ include.width }}" style="min-height:{% if include.min-height %}{{ include.min-height }}{% else  %}450px{% endif %}">
+<div class="card shadow mb-{{ include.width }}" style="min-height:{% if include.min-height %}{{ include.min-height }}{% else  %}450px{% endif %}">
 
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">{{ include.title }}</h6>
-            <div class="dropdown no-arrow">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenu{{ include.title | slugify }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenu{{ include.title | slugify }}">
-                    <div class="dropdown-header">Actions:</div>
-                    <a class="dropdown-item" onclick='saveImage("area-chart-{{ include.title | slugify }}")'>Save Image</a>
-                </div>
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">{{ include.title }}</h6>
+        <div class="dropdown no-arrow">
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenu{{ include.title | slugify }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenu{{ include.title | slugify }}">
+                <div class="dropdown-header">Actions:</div>
+                <a class="dropdown-item" onclick='saveImage("area-chart-{{ include.title | slugify }}")'>Save Image</a>
             </div>
         </div>
-        <!-- Card Body -->
-        <div class="card-body">
-            <div class="chart-area pt-4 pb-2">
-                <canvas id="area-chart-{{ include.title | slugify }}"></canvas>
-            </div><div class="mt-4 text-center small">
-            </div>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+        <div class="chart-area pt-4 pb-2">
+            <canvas id="area-chart-{{ include.title | slugify }}"></canvas>
+        </div><div class="mt-4 text-center small">
         </div>
     </div>
 </div>
