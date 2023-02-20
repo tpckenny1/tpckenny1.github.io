@@ -41,21 +41,29 @@ function fillDatatable(type="", date=""){
     $('#{{ include.title | slugify }}').DataTable({
       data: respData['data'],
       columns: [
-        {data: 'Student Name', title: "Student Name", 
-        render: function (data, type, row) {
+        {data: 'Student Name', title: "Student Name", render: function (data, type, row) {
           // return '<a href="" target="_blank">'+data+'</a>'
-          return '<form name="form1" action="test1.html" method="POST" >' + 
-            '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
-            '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
-          }},
-          {data: 'Readiness', title: "Readiness"},
-          {data: 'CMJ atigue', title: "CMJ atigue"},
-          {data: 'DJ Fatigue', title: "DJ Fatigue"},
-          {data: 'UpperBody Fatigue', title: "UpperBody Fatigue"},
-          {data: 'fatigue', title: "fatigue"},
-          {data: 'stress', title: "stress"},
-          {data: 'muscle soreness', title: "muscle soreness"},
-          {data: 'sleep status', title: "sleep status"}
+            return '<form name="form1" action="test1.html" method="POST" >' + 
+              '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
+              '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
+        }},
+        {data: 'Readiness', title: "Readiness", render: function (data, type, row) {
+          if (data <= 0.5){
+            readiness_status = "Red";
+          } else if ((data > 0.5) && (data < 0.8)){
+            readiness_status = "Yellow";
+          } else {
+            readiness_status = "Green";
+          }
+          return readiness_status
+        }},
+        {data: 'CMJ atigue', title: "CMJ atigue"},
+        {data: 'DJ Fatigue', title: "DJ Fatigue"},
+        {data: 'UpperBody Fatigue', title: "UpperBody Fatigue"},
+        {data: 'fatigue', title: "fatigue"},
+        {data: 'stress', title: "stress"},
+        {data: 'muscle soreness', title: "muscle soreness"},
+        {data: 'sleep status', title: "sleep status"}
           
         ]
       });
