@@ -191,12 +191,13 @@ postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT64
           }
         }],
         yAxes: [{
-          ticks: { {% if include.currency %}
-            callback: function(value, index, values) {
-              return '$' + number_format(value);
-            },{% endif %}
-            maxTicksLimit: 5,
-            padding: 10,        },
+          // ticks: { {% if include.currency %}
+          //   callback: function(value, index, values) {
+          //     return '$' + number_format(value);
+          //   },{% endif %}
+          //   maxTicksLimit: 5,
+          //   padding: 10,       
+          // },
           gridLines: {
             color: "rgb(234, 236, 244)",
             zeroLineColor: "rgb(234, 236, 244)",
