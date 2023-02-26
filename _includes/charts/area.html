@@ -114,8 +114,8 @@ postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT64
   name: "黃文卓" 
 }).then((respData) => {
   // console.log(respData);
-  let dates = respData['data'].map(i => stripDate(i.Date) );
-  let readiness = respData['data'].map(i => `${i.Readiness}`);
+  let dates = respData['data'].slice(-30).map(i => stripDate(i.Date) );
+  let readiness = respData['data'].slice(-30).map(i => `${i.Readiness}`);
   // console.log(dates) 
   console.log(readiness)
 
