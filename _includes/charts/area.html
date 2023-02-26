@@ -111,12 +111,12 @@ function stripDate(isoDateString){
 postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
 { 
   type: "search_by_name",
-  name: "何亞璇" 
+  name: "黃文卓" 
 }).then((respData) => {
   // console.log(respData);
   let dates = respData['data'].map(i => stripDate(i.Date) );
   let readiness = respData['data'].map(i => `${i.Readiness}`);
-  console.log(dates) 
+  // console.log(dates) 
   console.log(readiness)
 
 
@@ -196,6 +196,11 @@ postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT64
           //   maxTicksLimit: 5,
           //   padding: 10,       
           // },
+          ticks: {
+            stepSize: 0.001,
+            min: -1.5,
+            max: 1.5
+          },
           gridLines: {
             color: "rgb(234, 236, 244)",
             zeroLineColor: "rgb(234, 236, 244)",
