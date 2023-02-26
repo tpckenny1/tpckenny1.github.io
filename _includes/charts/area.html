@@ -127,116 +127,126 @@ postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT64
   var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
-      // labels: [{% for label in labels %}"{{ label }}"{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
-      // datasets: [{% for dataset in datasets %}{% assign dataset_title = dataset | split: ":" | first %}{% assign points = dataset |  replace: dataset_title, "" | replace: ":", "" | split: "," %}{
-      //   label: "{{ dataset_title}}",
-      //   lineTension: 0.3,
-      //   backgroundColor: "rgba(78, 115, 223, 0.05)",
-      //   borderColor: "rgba(78, 115, 223, 1)",
-      //   pointRadius: 3,
-      //   pointBackgroundColor: "rgba(78, 115, 223, 1)",
-      //   pointBorderColor: "rgba(78, 115, 223, 1)",
-      //   pointHoverRadius: 3,
-      //   pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-      //   pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-      //   pointHitRadius: 10,
-      //   pointBorderWidth: 2,
-      //   data: [{% for point in points %}{{ point }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
-      // }{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
       labels: dates,
       datasets: [{
         label: "Readiness",
-        // lineTension: 0.3,
-        // backgroundColor: "rgba(78, 115, 223, 0.05)",
-        // borderColor: "rgba(78, 115, 223, 1)",
-        // pointRadius: 3,
-        // pointBackgroundColor: "rgba(78, 115, 223, 1)",
-        // pointBorderColor: "rgba(78, 115, 223, 1)",
-        // pointHoverRadius: 3,
-        // pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-        // pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-        // pointHitRadius: 10,
-        // pointBorderWidth: 2,
         data: readiness
       }]
     },
-    options: {
-      {% if include.title %}title: {
-          display: true,
-          fontsize: 14,
-          text: '{{ include.title }}'
-      },{% endif %}
-      maintainAspectRatio: false,
-      layout: {
-        padding: {
-          left: 10,
-          right: 25,
-          top: 0,
-          bottom: 0
-        }
-      },
-      scales: {
-        xAxes: [{
-          time: {
-            unit: 'date'
-          },
-          gridLines: {
-            display: false,
-            drawBorder: false
-          },
-          ticks: {
-            maxTicksLimit: 7
-          }
-        }],
-        yAxes: [{
-          // ticks: { {% if include.currency %}
-          //   callback: function(value, index, values) {
-          //     return '$' + number_format(value);
-          //   },{% endif %}
-          //   maxTicksLimit: 5,
-          //   padding: 10,       
-          // },
-          // ticks: {
-          //   stepSize: 0.001,
-          //   min: -1.5,
-          //   max: 1.5
-          // },
-          gridLines: {
-            color: "rgb(234, 236, 244)",
-            zeroLineColor: "rgb(234, 236, 244)",
-            drawBorder: false,
-            borderDash: [2],
-            zeroLineBorderDash: [2]
-          }
-        }],
-      },
-      legend: {
-        display: true,
-        position: "{% if include.legend_position %}{{ include.legend_position }}{% else %}top{% endif %}"
-      },
-      tooltips: {
-        backgroundColor: "rgb(255,255,255)",
-        bodyFontColor: "#858796",
-        titleMarginBottom: 10,
-        titleFontColor: '#6e707e',
-        titleFontSize: 14,
-        borderColor: '#dddfeb',
-        borderWidth: 1,
-        xPadding: 15,
-        yPadding: 15,
-        displayColors: false,
-        intersect: false,
-        mode: 'index',
-        {% if include.currency %}      callbacks: {
-          label: function(tooltipItem, chart) {
-            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-            return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
-          }
-        },{% endif %}
-        caretPadding: 10
-      }
-    }
-    });
+  }); 
+//   var myLineChart = new Chart(ctx, {
+//     type: 'line',
+//     data: {
+//       // labels: [{% for label in labels %}"{{ label }}"{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
+//       // datasets: [{% for dataset in datasets %}{% assign dataset_title = dataset | split: ":" | first %}{% assign points = dataset |  replace: dataset_title, "" | replace: ":", "" | split: "," %}{
+//       //   label: "{{ dataset_title}}",
+//       //   lineTension: 0.3,
+//       //   backgroundColor: "rgba(78, 115, 223, 0.05)",
+//       //   borderColor: "rgba(78, 115, 223, 1)",
+//       //   pointRadius: 3,
+//       //   pointBackgroundColor: "rgba(78, 115, 223, 1)",
+//       //   pointBorderColor: "rgba(78, 115, 223, 1)",
+//       //   pointHoverRadius: 3,
+//       //   pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+//       //   pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+//       //   pointHitRadius: 10,
+//       //   pointBorderWidth: 2,
+//       //   data: [{% for point in points %}{{ point }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
+//       // }{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
+//       labels: dates,
+//       datasets: [{
+//         label: "Readiness",
+//         // lineTension: 0.3,
+//         // backgroundColor: "rgba(78, 115, 223, 0.05)",
+//         // borderColor: "rgba(78, 115, 223, 1)",
+//         // pointRadius: 3,
+//         // pointBackgroundColor: "rgba(78, 115, 223, 1)",
+//         // pointBorderColor: "rgba(78, 115, 223, 1)",
+//         // pointHoverRadius: 3,
+//         // pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+//         // pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+//         // pointHitRadius: 10,
+//         // pointBorderWidth: 2,
+//         data: readiness
+//       }]
+//     },
+//     options: {
+//       {% if include.title %}title: {
+//           display: true,
+//           fontsize: 14,
+//           text: '{{ include.title }}'
+//       },{% endif %}
+//       maintainAspectRatio: false,
+//       layout: {
+//         padding: {
+//           left: 10,
+//           right: 25,
+//           top: 0,
+//           bottom: 0
+//         }
+//       },
+//       scales: {
+//         xAxes: [{
+//           time: {
+//             unit: 'date'
+//           },
+//           gridLines: {
+//             display: false,
+//             drawBorder: false
+//           },
+//           ticks: {
+//             maxTicksLimit: 7
+//           }
+//         }],
+//         yAxes: [{
+//           // ticks: { {% if include.currency %}
+//           //   callback: function(value, index, values) {
+//           //     return '$' + number_format(value);
+//           //   },{% endif %}
+//           //   maxTicksLimit: 5,
+//           //   padding: 10,       
+//           // },
+//           // ticks: {
+//           //   stepSize: 0.001,
+//           //   min: -1.5,
+//           //   max: 1.5
+//           // },
+//           gridLines: {
+//             color: "rgb(234, 236, 244)",
+//             zeroLineColor: "rgb(234, 236, 244)",
+//             drawBorder: false,
+//             borderDash: [2],
+//             zeroLineBorderDash: [2]
+//           }
+//         }],
+//       },
+//       legend: {
+//         display: true,
+//         position: "{% if include.legend_position %}{{ include.legend_position }}{% else %}top{% endif %}"
+//       },
+//       tooltips: {
+//         backgroundColor: "rgb(255,255,255)",
+//         bodyFontColor: "#858796",
+//         titleMarginBottom: 10,
+//         titleFontColor: '#6e707e',
+//         titleFontSize: 14,
+//         borderColor: '#dddfeb',
+//         borderWidth: 1,
+//         xPadding: 15,
+//         yPadding: 15,
+//         displayColors: false,
+//         intersect: false,
+//         mode: 'index',
+//         {% if include.currency %}      callbacks: {
+//           label: function(tooltipItem, chart) {
+//             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+//             return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+//           }
+//         },{% endif %}
+//         caretPadding: 10
+//       }
+//     }
+//     });
 
-});
+// });
 </script>
