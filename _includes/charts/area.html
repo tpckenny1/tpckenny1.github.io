@@ -51,40 +51,6 @@ function saveImage(canvas_id) {
    });
 }
 
-function generateColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-{% if include.currency %}function number_format(number, decimals, dec_point, thousands_sep) {
-  // *     example: number_format(1234.56, 2, ',', ' ');
-  // *     return: '1 234,56'
-  number = (number + '').replace(',', '').replace(' ', '');
-  var n = !isFinite(+number) ? 0 : +number,
-    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-    s = '',
-    toFixedFix = function(n, prec) {
-      var k = Math.pow(10, prec);
-      return '' + Math.round(n * k) / k;
-    };
-  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-  if (s[0].length > 3) {
-    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-  }
-  if ((s[1] || '').length < prec) {
-    s[1] = s[1] || '';
-    s[1] += new Array(prec - s[1].length + 1).join('0');
-  }
-  return s.join(dec);
-} {% endif %}
-
 // Ensure the saved image has a white background
 var backgroundColor = 'white';
 Chart.plugins.register({
@@ -108,135 +74,142 @@ function stripDate(isoDateString){
   return newIsoDateString
 }
 
-postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
-{ 
-  type: "search_by_name",
-  name: "黃文卓" 
-}).then((respData) => {
-  // console.log(respData);
-  let dates = respData['data'].slice(-30).map(i => stripDate(i.Date) );
-  let readiness = respData['data'].slice(-30).map(i => `${i.Readiness}`);
-  // console.log(dates) 
-  console.log(readiness)
+function fillChart(){
+
+  postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
+  { 
+    type: "search_by_name",
+    name: "黃文卓" 
+  }).then((respData) => {
+    // console.log(respData);
+    let dates = respData['data'].slice(-30).map(i => stripDate(i.Date) );
+    let readiness = respData['data'].slice(-30).map(i => `${i.Readiness}`);
+    // console.log(dates) 
+    console.log(readiness)
 
 
-  // let labels = [1,2,3,4,5,6,7,8]
+    // let labels = [1,2,3,4,5,6,7,8]
 
-  // Area Chart Example
-  var ctx = document.getElementById("area-chart-{{ include.title | slugify }}");
-  var myLineChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      // labels: [{% for label in labels %}"{{ label }}"{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
-      // datasets: [{% for dataset in datasets %}{% assign dataset_title = dataset | split: ":" | first %}{% assign points = dataset |  replace: dataset_title, "" | replace: ":", "" | split: "," %}{
-      //   label: "{{ dataset_title}}",
-      //   lineTension: 0.3,
-      //   backgroundColor: "rgba(78, 115, 223, 0.05)",
-      //   borderColor: "rgba(78, 115, 223, 1)",
-      //   pointRadius: 3,
-      //   pointBackgroundColor: "rgba(78, 115, 223, 1)",
-      //   pointBorderColor: "rgba(78, 115, 223, 1)",
-      //   pointHoverRadius: 3,
-      //   pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-      //   pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-      //   pointHitRadius: 10,
-      //   pointBorderWidth: 2,
-      //   data: [{% for point in points %}{{ point }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
-      // }{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
-      labels: dates,
-      datasets: [{
-        label: "Readiness",
-        lineTension: 0.3,
-        backgroundColor: "rgba(78, 115, 223, 0.05)",
-        borderColor: "rgba(78, 115, 223, 1)",
-        pointRadius: 3,
-        pointBackgroundColor: "rgba(78, 115, 223, 1)",
-        pointBorderColor: "rgba(78, 115, 223, 1)",
-        pointHoverRadius: 3,
-        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-        pointHitRadius: 10,
-        pointBorderWidth: 2,
-        data: readiness
-      }]
-    },
-    options: {
-      {% if include.title %}title: {
-          display: true,
-          fontsize: 14,
-          text: '{{ include.title }}'
-      },{% endif %}
-      maintainAspectRatio: false,
-      layout: {
-        padding: {
-          left: 10,
-          right: 25,
-          top: 0,
-          bottom: 0
-        }
+    // Area Chart Example
+    var ctx = document.getElementById("area-chart-{{ include.title | slugify }}");
+    var myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        // labels: [{% for label in labels %}"{{ label }}"{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
+        // datasets: [{% for dataset in datasets %}{% assign dataset_title = dataset | split: ":" | first %}{% assign points = dataset |  replace: dataset_title, "" | replace: ":", "" | split: "," %}{
+        //   label: "{{ dataset_title}}",
+        //   lineTension: 0.3,
+        //   backgroundColor: "rgba(78, 115, 223, 0.05)",
+        //   borderColor: "rgba(78, 115, 223, 1)",
+        //   pointRadius: 3,
+        //   pointBackgroundColor: "rgba(78, 115, 223, 1)",
+        //   pointBorderColor: "rgba(78, 115, 223, 1)",
+        //   pointHoverRadius: 3,
+        //   pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+        //   pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+        //   pointHitRadius: 10,
+        //   pointBorderWidth: 2,
+        //   data: [{% for point in points %}{{ point }}{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
+        // }{% if forloop.last %}{% else %},{% endif %}{% endfor %}],
+        labels: dates,
+        datasets: [{
+          label: "Readiness",
+          lineTension: 0.3,
+          backgroundColor: "rgba(78, 115, 223, 0.05)",
+          borderColor: "rgba(78, 115, 223, 1)",
+          pointRadius: 3,
+          pointBackgroundColor: "rgba(78, 115, 223, 1)",
+          pointBorderColor: "rgba(78, 115, 223, 1)",
+          pointHoverRadius: 3,
+          pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+          pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+          pointHitRadius: 10,
+          pointBorderWidth: 2,
+          data: readiness
+        }]
       },
-      scales: {
-        xAxes: [{
-          time: {
-            unit: 'date'
-          },
-          gridLines: {
-            display: false,
-            drawBorder: false
-          },
-          ticks: {
-            maxTicksLimit: 7
-          }
-        }],
-        yAxes: [{
-          // ticks: { {% if include.currency %}
-          //   callback: function(value, index, values) {
-          //     return '$' + number_format(value);
-          //   },{% endif %}
-          //   maxTicksLimit: 5,
-          //   padding: 10,       
-          // },
-          // ticks: {
-          //   stepSize: 0.001,
-          //   min: -1.5,
-          //   max: 1.5
-          // },
-          gridLines: {
-            color: "rgb(234, 236, 244)",
-            zeroLineColor: "rgb(234, 236, 244)",
-            drawBorder: false,
-            borderDash: [2],
-            zeroLineBorderDash: [2]
-          }
-        }],
-      },
-      legend: {
-        display: true,
-        position: "{% if include.legend_position %}{{ include.legend_position }}{% else %}top{% endif %}"
-      },
-      tooltips: {
-        backgroundColor: "rgb(255,255,255)",
-        bodyFontColor: "#858796",
-        titleMarginBottom: 10,
-        titleFontColor: '#6e707e',
-        titleFontSize: 14,
-        borderColor: '#dddfeb',
-        borderWidth: 1,
-        xPadding: 15,
-        yPadding: 15,
-        displayColors: false,
-        intersect: false,
-        mode: 'index',
-        {% if include.currency %}      callbacks: {
-          label: function(tooltipItem, chart) {
-            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-            return datasetLabel + ': ' + tooltipItem.yLabel;
-          }
+      options: {
+        {% if include.title %}title: {
+            display: true,
+            fontsize: 14,
+            text: '{{ include.title }}'
         },{% endif %}
-        caretPadding: 10
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+            left: 10,
+            right: 25,
+            top: 0,
+            bottom: 0
+          }
+        },
+        scales: {
+          xAxes: [{
+            time: {
+              unit: 'date'
+            },
+            gridLines: {
+              display: false,
+              drawBorder: false
+            },
+            ticks: {
+              maxTicksLimit: 7
+            }
+          }],
+          yAxes: [{
+            // ticks: { {% if include.currency %}
+            //   callback: function(value, index, values) {
+            //     return '$' + number_format(value);
+            //   },{% endif %}
+            //   maxTicksLimit: 5,
+            //   padding: 10,       
+            // },
+            // ticks: {
+            //   stepSize: 0.001,
+            //   min: -1.5,
+            //   max: 1.5
+            // },
+            gridLines: {
+              color: "rgb(234, 236, 244)",
+              zeroLineColor: "rgb(234, 236, 244)",
+              drawBorder: false,
+              borderDash: [2],
+              zeroLineBorderDash: [2]
+            }
+          }],
+        },
+        legend: {
+          display: true,
+          position: "{% if include.legend_position %}{{ include.legend_position }}{% else %}top{% endif %}"
+        },
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          titleMarginBottom: 10,
+          titleFontColor: '#6e707e',
+          titleFontSize: 14,
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          intersect: false,
+          mode: 'index',
+          {% if include.currency %}      callbacks: {
+            label: function(tooltipItem, chart) {
+              var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+              return datasetLabel + ': ' + tooltipItem.yLabel;
+            }
+          },{% endif %}
+          caretPadding: 10
+        }
       }
-    }
-    });
+      });
 
+  });
+}
+
+$(document).ready(function() {
+  fillChart()
 });
 </script>
