@@ -74,12 +74,13 @@ function stripDate(isoDateString){
   return newIsoDateString
 }
 
-function fillChart(){
+function fillChart(school="", type="search_by_name", date="黃文卓"){
 
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
-    type: "search_by_name",
-    name: "黃文卓" 
+    school: school,
+    type: type,
+    date: date 
   }).then((respData) => {
     // console.log(respData);
     let dates = respData['data'].slice(-30).map(i => stripDate(i.Date) );
