@@ -43,7 +43,7 @@ function fillDatatable(school="", type="", date=""){
       data: respData['data'],
       columns: [
         {data: 'Student Name', title: "Student Name", render: function (data, type, row) {
-          return '<a href="javascript:fillChart(&#39;UTaipei&#39;, &#39;search_by_name&#39;, &#39;郭柏廷&#39;);">'
+          return '<a href="javascript:fillChart(\''+ school +'\', \''+ type +'\', \''+ data +'\');">'+ data +'</a>'
             // return '<form name="form1" action="test1.html" method="POST" >' + 
             //   '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
             //   '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
