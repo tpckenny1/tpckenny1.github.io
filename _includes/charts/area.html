@@ -74,13 +74,13 @@ function stripDate(isoDateString){
   return newIsoDateString
 }
 
-function fillChart(school="", type="", date=""){
+function fillChart(school="", type="", name=""){
 
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
     school: school,
     type: type,
-    date: date 
+    name: name 
   }).then((respData) => {
     // console.log(respData);
     let dates = respData['data'].slice(-30).map(i => stripDate(i.Date) );
