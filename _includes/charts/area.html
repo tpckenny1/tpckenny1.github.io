@@ -80,9 +80,12 @@ function reFillChart(school="", name=""){
 }
 
 function clearChart(){
-  document.getElementById("area-chart-{{ include.title | slugify }}").remove();
-  var ctx = document.createElement('canvas')
+  var ctx = document.getElementById("area-chart-{{ include.title | slugify }}")
+  var pctx = ctx.parentNode
+  ctx.remove();
+  ctx = document.createElement('canvas')
   ctx.setAttribute("id", "area-chart-{{ include.title | slugify }}");  
+  pctx.appendChild(ctx);
 }
 
 function fillChart(school="", name=""){
