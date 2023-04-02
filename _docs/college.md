@@ -8,6 +8,4 @@ title: College DataTables
 <p class="mb-4">The datatable recorded the daily performance data of swimming players.</p>
 
 {% include datatable.html title="Swimming Player Datatable" school="UTaipei" file="table-example" %}
-
-
 {% include charts/area.html title="Swimming Player Stat" width=8 showDetails='true' %}
