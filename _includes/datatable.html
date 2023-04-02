@@ -43,7 +43,7 @@ function fillDatatable(school="", type="", date=""){
       data: respData['data'],
       columns: [
         {data: 'Student Name', title: "Student Name", render: function (_data, _type, _row) {
-          return '<a href="javascript:fillChart(\''+ school +'\', \''+ type +'\', \''+ _data +'\');">'+ _data +'</a>'
+          return '<a href="javascript:fillChart(\''+ school +'\', \''+ _data +'\');">'+ _data +'</a>'
         }},
         {data: 'Readiness', title: "Readiness", render: function (_data, _type, _row) {
           if (_data <= 0.5){

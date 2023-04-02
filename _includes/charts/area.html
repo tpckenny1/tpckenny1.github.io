@@ -74,12 +74,12 @@ function stripDate(isoDateString){
   return newIsoDateString
 }
 
-function fillChart(school="", type="", name=""){
+function fillChart(school="", name=""){
 
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
     school: school,
-    type: type,
+    type: "search_by_name",
     name: name 
   }).then((respData) => {
     // console.log(respData);
@@ -211,6 +211,6 @@ function fillChart(school="", type="", name=""){
 }
 
 $(document).ready(function() {
-  fillChart("UTaipei", "search_by_name", "黃文卓")
+  fillChart("UTaipei", "黃文卓")
 });
 </script>
