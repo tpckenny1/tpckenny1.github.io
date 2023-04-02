@@ -1,5 +1,3 @@
-{% assign labels = include.labels | split: "," %}
-{% assign datasets = include.datasets | split: "|" %}
 {% if include.width %}{% else %}{% assign include.width = 12 %}{% endif %}{% assign width_large = include.width | plus: 1 %}
 
 <div class="card shadow mb-{{ include.width }}" style="min-height:{% if include.min-height %}{{ include.min-height }}{% else  %}450px{% endif %}">
@@ -143,11 +141,11 @@ function fillChart(school="", name=""){
         }]
       },
       options: {
-        {% if include.title %}title: {
+        title: {
             display: true,
             fontsize: 14,
-            text: '{{ include.title }}'
-        },{% endif %}
+            text: name
+        },
         maintainAspectRatio: false,
         layout: {
           padding: {
@@ -171,7 +169,7 @@ function fillChart(school="", name=""){
             }
           }],
           yAxes: [{
-            // ticks: { {% if include.currency %}
+            // ticks: { {% if include.showDetails %}
             //   callback: function(value, index, values) {
             //     return '$' + number_format(value);
             //   },{% endif %}
@@ -209,7 +207,7 @@ function fillChart(school="", name=""){
           displayColors: false,
           intersect: false,
           mode: 'index',
-          {% if include.currency %}      callbacks: {
+          {% if include.showDetails %} callbacks: {
             label: function(tooltipItem, chart) {
               var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
               return datasetLabel + ': ' + tooltipItem.yLabel;
