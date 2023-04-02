@@ -74,7 +74,7 @@ function stripDate(isoDateString){
   return newIsoDateString
 }
 
-function fillChart(school="", type="search_by_name", date="黃文卓"){
+function fillChart(school="", type="", date=""){
 
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
@@ -211,6 +211,6 @@ function fillChart(school="", type="search_by_name", date="黃文卓"){
 }
 
 $(document).ready(function() {
-  fillChart()
+  fillChart("UTaipei", "search_by_name", "黃文卓")
 });
 </script>
