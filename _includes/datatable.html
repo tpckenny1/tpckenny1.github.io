@@ -43,10 +43,10 @@ function fillDatatable(school="", type="", date=""){
       data: respData['data'],
       columns: [
         {data: 'Student Name', title: "Student Name", render: function (data, type, row) {
-          // return '<a href="" target="_blank">'+data+'</a>'
-            return '<form name="form1" action="test1.html" method="POST" >' + 
-              '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
-              '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
+          return '<a href="javascript:fillChart(&#39;UTaipei&#39;, &#39;search_by_name&#39;, &#39;郭柏廷&#39;);">'
+            // return '<form name="form1" action="test1.html" method="POST" >' + 
+            //   '<input type="hidden" id="action" name="action" value="'+ data +'"/>' + 
+            //   '<a href="javascript:document.form1.submit();">'+ data +'</a></form>'
         }},
         {data: 'Readiness', title: "Readiness", render: function (data, type, row) {
           if (data <= 0.5){
