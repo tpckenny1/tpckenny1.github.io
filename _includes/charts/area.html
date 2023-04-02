@@ -74,6 +74,17 @@ function stripDate(isoDateString){
   return newIsoDateString
 }
 
+function reFillChart(school="", name=""){
+  clearChart();
+  fillChart(school, name);
+}
+
+function clearChart(){
+  document.getElementById("area-chart-{{ include.title | slugify }}").remove();
+  var ctx = document.createElement('canvas')
+  ctx.setAttribute("id", "area-chart-{{ include.title | slugify }}");  
+}
+
 function fillChart(school="", name=""){
 
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
@@ -87,7 +98,6 @@ function fillChart(school="", name=""){
     let readiness = respData['data'].slice(-30).map(i => `${i.Readiness}`);
     // console.log(dates) 
     console.log(readiness)
-
 
     // let labels = [1,2,3,4,5,6,7,8]
 
