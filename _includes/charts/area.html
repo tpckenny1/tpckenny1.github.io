@@ -28,18 +28,6 @@
 <script src="{{ site.url }}{{ site.baseurl }}/assets/js/Chart.min.js"></script>
 <script src="{{ site.url }}{{ site.baseurl }}/assets/js/login.js"></script>
 <script>
-async function postData(url="", data={}) {
-  const response = await fetch(url, {
-    redirect: "follow",
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8",
-    },
-  });
-  return response.json();
-}
-
 function saveImage(canvas_id) {
    var canvas = document.getElementById(canvas_id);
    canvas.toBlob(function(blob) {

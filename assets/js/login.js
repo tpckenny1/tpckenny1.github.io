@@ -64,7 +64,7 @@ async function postData(url="", data={}) {
     // Check expired accesskey 
     const value = getWithExpiry("accesskey")
     console.log(value)
-    if (retUrl === null) {
+    if ((value === null) || (typeof value === "undefined") || (value === "")) { 
         window.location = "https://tpckenny1.github.io/docs/login/?retUrl" + location.pathname;
     } 
     // Fetch Data through API 
