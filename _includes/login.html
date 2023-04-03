@@ -13,15 +13,22 @@
 <script>
   
   function setkey(){
+    let rerUrl = null;
     let inputSchool = document.getElementById("input-school")
     let inputAccesskey = document.getElementById("input-accesskey")
+    
     setWithExpiry("accesskey", 
       {
         "school": inputSchool.value,
         "accesskey": inputAccesskey.value
       }, 
       5000)
-    window.location = "https://tpckenny1.github.io/";
+    rerUrl = findGetParameter()
+    if ((rerUrl === null) || (typeof rerUrl === "undefined") || (rerUrl === "")) { 
+      window.location = "https://tpckenny1.github.io/";
+    } else {
+      window.location = "https://tpckenny1.github.io/" + rerUrl;
+    }
   }
 
 </script>
