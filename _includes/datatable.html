@@ -4,7 +4,7 @@
 <script src="{{ site.url }}{{ site.baseurl }}/assets/js/login.js"></script>
 <script>
 $(document).ready(function() {
-  fillDatatable("{{ include.school }}", "search_by_date", "")
+  fillDatatable("{{ include.school }}", "")
 });
 
 // async function postData(url="", data={}) {
@@ -23,7 +23,7 @@ function overwriteDatatable(){
   let selected_date = $('#selected_date').val().toString(); 
   console.log(selected_date);
   destroyDatatable();
-  fillDatatable("{{ include.school }}", "search_by_date", selected_date)
+  fillDatatable("{{ include.school }}", selected_date)
 }
 
 function destroyDatatable(){
@@ -31,11 +31,12 @@ function destroyDatatable(){
   dt.destroy();
 }
 
-function fillDatatable(school="", type="", date=""){
+function fillDatatable(school="", date=""){
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
+    accesskey: getAccessKey(),
     school: school,
-    type: type,
+    type: "search_by_date",
     date: date 
   }).then((respData) => {
     console.log(respData); // JSON data parsed by `data.json()` call

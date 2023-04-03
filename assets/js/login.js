@@ -49,6 +49,23 @@ function getWithExpiry(key) {
     return item.value
 }
 
+function getAccessKey() {
+    const itemStr = localStorage.getItem("accesskey")
+    // if the item doesn't exist, return null
+    if ((itemStr === null) || (typeof itemStr === "undefined") || (itemStr === "")) {
+        return ""
+    }
+    const item = JSON.parse(itemStr)
+    const itemValue = item.value
+    if ((itemValue === null) || (typeof itemValue === "undefined") || (itemValue === "")) {
+        return ""
+    }
+    if ((itemValue.accesskey === null) || (typeof itemValue.accesskey === "undefined") || (itemValue.accesskey === "")) {
+        return ""
+    }
+    return itemValue.accesskey
+}
+
 function findGetParameter(parameterName) {
     var result = null,
         tmp = [];

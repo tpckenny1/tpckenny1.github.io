@@ -63,8 +63,7 @@ function stripDate(isoDateString){
 
 function reFillChart(school="", name=""){
   clearChart();
-  accesskey = ""
-  fillChart(school, name, accesskey);
+  fillChart(school, name);
 }
 
 function clearChart(){
@@ -76,11 +75,11 @@ function clearChart(){
   pctx.appendChild(ctx);
 }
 
-function fillChart(school="", name="", accesskey=""){
+function fillChart(school="", name=""){
 
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
-    accesskey: accesskey,
+    accesskey: getAccessKey(),
     school: school,
     type: "search_by_name",
     name: name 
