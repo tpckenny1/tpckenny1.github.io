@@ -28,7 +28,7 @@
 }
 
 /* Set a style for the submit/login button */
-.form-container .btn {
+.form-container .btn-login {
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
@@ -45,6 +45,6 @@
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-container .btn-login:hover, .open-button:hover {
   opacity: 1;
 }
