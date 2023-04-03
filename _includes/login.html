@@ -7,6 +7,21 @@
     <input type="text" id="input-school" placeholder="Enter School" name="school" required>
     <label for="psw"><b>Password</b></label>
     <input type="password" id="input-accesskey" placeholder="Enter Accesskey" name="psw" required>
-    <button type="submit" class="btn-login">Login</button>
+    <button type="submit" class="btn-login" onclick="setkey()">Login</button>
   </form>
 </div>
+<script>
+  
+  function setkey(){
+    let btnLogin = document.getElementById("btn-login")
+    let inputSchool = document.getElementById("input-school")
+    let inputAccesskey = document.getElementById("input-accesskey")
+    setWithExpiry("accesskey", 
+      {
+        "school": inputSchool.value,
+        "accesskey": inputAccesskey.value
+      }, 
+      5000)
+  }
+
+</script>

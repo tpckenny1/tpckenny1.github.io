@@ -1,20 +1,20 @@
-const btnLogin = document.getElementById("btn-login")
-const inputSchool = document.getElementById("input-school")
-const inputAccesskey = document.getElementById("input-accesskey")
+// const btnLogin = document.getElementById("btn-login")
+// const inputSchool = document.getElementById("input-school")
+// const inputAccesskey = document.getElementById("input-accesskey")
 
-btnSet.addEventListener("click", () => {
-    setWithExpiry("accesskey", 
-        {
-            "school": inputSchool.value,
-            "accesskey": inputAccesskey.value
-        }, 
-        5000)
-})
+// btnSet.addEventListener("click", () => {
+//     setWithExpiry("accesskey", 
+//         {
+//             "school": inputSchool.value,
+//             "accesskey": inputAccesskey.value
+//         }, 
+//         5000)
+// })
 
-btnGet.addEventListener("click", () => {
-    const value = getWithExpiry("accesskey")
-    console.log(value)
-})
+// btnGet.addEventListener("click", () => {
+//     const value = getWithExpiry("accesskey")
+//     console.log(value)
+// })
 
 function setWithExpiry(key, value, ttl) {
     const now = new Date()
