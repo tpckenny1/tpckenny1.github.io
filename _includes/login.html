@@ -13,7 +13,6 @@
 <script>
   
   function setkey(){
-    let btnLogin = document.getElementById("btn-login")
     let inputSchool = document.getElementById("input-school")
     let inputAccesskey = document.getElementById("input-accesskey")
     setWithExpiry("accesskey", 
@@ -22,6 +21,7 @@
         "accesskey": inputAccesskey.value
       }, 
       5000)
+    window.location = "https://tpckenny1.github.io/";
   }
 
 </script>
