@@ -22,13 +22,13 @@
         "school": inputSchool.value,
         "accesskey": inputAccesskey.value
       }, 
-      20000)
+      600000)
     retUrl = findGetParameter("retUrl")
     console.log(retUrl)
     if ((retUrl === null) || (typeof retUrl === "undefined") || (retUrl === "")) { 
       window.location = "https://tpckenny1.github.io/";
     } else {
-      window.location = "https://tpckenny1.github.io/" + retUrl;
+      window.location = "https://tpckenny1.github.io" + retUrl;
     }
   }
 
