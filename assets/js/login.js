@@ -59,3 +59,26 @@ function findGetParameter(parameterName) {
     }
     return result;
 }
+
+async function postData(url="", data={}) {
+    // Check expired accesskey 
+    const value = getWithExpiry("accesskey")
+    console.log(value)
+    if (retUrl === null) {
+        window.location = "https://tpckenny1.github.io/docs/login/?retUrl" + location.pathname;
+    } 
+    // Fetch Data through API 
+    const response = await fetch(url, {
+        redirect: "follow",
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+        },
+    });
+    return response.json();
+}
+
+// function fetchDataByAPI(url="", data={}) {
+//     return postData(url, data)
+// }

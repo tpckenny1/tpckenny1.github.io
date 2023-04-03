@@ -1,23 +1,23 @@
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ site.url }}{{ site.baseurl }}/assets/js/login.js"></script>
 <script>
-async function postData(url="", data={}) {
-  const response = await fetch(url, {
-    redirect: "follow",
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8",
-    },
-  });
-  return response.json();
-}
-
-
 $(document).ready(function() {
   fillDatatable("{{ include.school }}", "search_by_date", "")
 });
+
+// async function postData(url="", data={}) {
+//   const response = await fetch(url, {
+//     redirect: "follow",
+//     method: "POST",
+//     body: JSON.stringify(data),
+//     headers: {
+//       "Content-Type": "text/plain;charset=utf-8",
+//     },
+//   });
+//   return response.json();
+// }
 
 function overwriteDatatable(){
   let selected_date = $('#selected_date').val().toString(); 
