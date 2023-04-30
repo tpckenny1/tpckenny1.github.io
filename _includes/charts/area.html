@@ -82,7 +82,8 @@ function fillChart(school="", name=""){
     accesskey: getAccessKey(),
     school: school,
     type: "search_by_name",
-    name: name 
+    name: name,
+    sport: "swimming"
   }).then((respData) => {
     // console.log(respData);
     let dates = respData['data'].slice(-30).map(i => stripDate(i.Date) );

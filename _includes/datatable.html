@@ -37,7 +37,8 @@ function fillDatatable(school="", date=""){
     accesskey: getAccessKey(),
     school: school,
     type: "search_by_date",
-    date: date 
+    date: date,
+    sport: "swimming"
   }).then((respData) => {
     console.log(respData); // JSON data parsed by `data.json()` call
     $('#{{ include.title | slugify }}').DataTable({
