@@ -61,9 +61,9 @@ function stripDate(isoDateString){
   return newIsoDateString
 }
 
-function reFillChart(school="", name=""){
+function reFillChart(sport="", school="", name=""){
   clearChart();
-  fillChart(school, name);
+  fillChart(sport, school, name);
 }
 
 function clearChart(){
@@ -75,7 +75,7 @@ function clearChart(){
   pctx.appendChild(ctx);
 }
 
-function fillChart(school="", name=""){
+function fillChart(sport="", school="", name=""){
 
   postData('https://script.google.com/macros/s/AKfycbzcJDnk1IuF-lNGdnMX4lX1rh1hT649vW8M5Z7QE9F1lVAsDjXwASMiP-P3M_nSijJLPA/exec', 
   { 
@@ -83,7 +83,7 @@ function fillChart(school="", name=""){
     school: school,
     type: "search_by_name",
     name: name,
-    sport: "swimming"
+    sport: sport
   }).then((respData) => {
     // console.log(respData);
     let dates = respData['data'].slice(-30).map(i => stripDate(i.Date) );
@@ -213,6 +213,6 @@ function fillChart(school="", name=""){
 }
 
 // $(document).ready(function() {
-//   fillChart("UTaipei", "黃文卓")
+//   fillChart("swimming", "UTaipei", "黃文卓")
 // });
 </script>

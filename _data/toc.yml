@@ -7,3 +7,9 @@
 - title: HighSchoolStudents
   icon: fa-table
   url: docs/highschool/
+- title: MartialStudents1
+  icon: fa-table
+  url: docs/martial_students1/
+- title: MartialStudents2
+  icon: fa-table
+  url: docs/martial_students2/
