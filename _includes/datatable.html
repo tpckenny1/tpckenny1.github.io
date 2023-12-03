@@ -31,8 +31,10 @@ function destroyDatatable(){
   dt.destroy();
 }
 
-function setTrafficLightStatus(_data, _type, _row) {
-  if (_data <= 0.5){
+function calcTrafficLightStatus(_data, _type, _row) {
+  if (_data === 0.0){
+    _status = '<p>⚫️</p>'; // Black
+  } else if (_data <= 0.5){
     _status = '<p>🔴</p>'; // Red
   } else if ((_data > 0.5) && (_data < 0.8)){
     _status = '<p>🟡</p>'; // Yellow
@@ -58,12 +60,12 @@ function fillDatatable(sport="", school="", date=""){
         {data: 'Student Name', title: "Student Name", render: function (_data, _type, _row) {
           return '<a href="javascript:reFillChart(\''+ sport +'\', \''+ school +'\', \''+ _data +'\');">'+ _data +'</a>'
         }},
-        {data: 'Readiness', title: "Readiness", render: setTrafficLightStatus},
-        {data: 'UpperBody Fatigue', title: "UpperBody Fatigue"},
-        {data: 'Avg Fatigue', title: "Avg. Fatigue"},
-        {data: 'Avg Stress', title: "Avg. Stress"},
-        {data: 'Avg Muscle Soreness', title: "Avg. Muscle Soreness"},
-        {data: 'Avg Sleep Status', title: "Avg. Sleep Status"}
+        {data: 'Readiness', title: "Readiness", render: calcTrafficLightStatus},
+        {data: 'UpperBody Fatigue', title: "UpperBody Fatigue", render: calcTrafficLightStatus},
+        {data: 'Avg Fatigue', title: "Avg. Fatigue", render: calcTrafficLightStatus},
+        {data: 'Avg Stress', title: "Avg. Stress", render: calcTrafficLightStatus},
+        {data: 'Avg Muscle Soreness', title: "Avg. Muscle Soreness", render: calcTrafficLightStatus},
+        {data: 'Avg Sleep Status', title: "Avg. Sleep Status", render: calcTrafficLightStatus}
           
         ]
       });
