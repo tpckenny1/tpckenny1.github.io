@@ -7,5 +7,5 @@ title: HighSchool DataTables
 <h1 class="h3 mb-2 text-gray-800">士林高商柔道</h1>
 <p class="mb-4">The datatable recorded the daily performance data of martial art players.</p>
 
-{% include datatable.html title="Martial Art Player Datatable" school="martialart3" sport="martialart" file="table-example" %}
+{% include datatable.html title="Martial Art Player Datatable" school="martialart9" sport="martialart" file="table-example" %}
 {% include charts/area.html title="Martial Art Player Stat" width=8 showDetails='true' %}
