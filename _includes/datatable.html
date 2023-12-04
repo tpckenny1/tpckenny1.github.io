@@ -33,13 +33,13 @@ function destroyDatatable(){
 
 function calcTrafficLightStatus(_data, _type, _row) {
   if (_data === 0.0){
-    _status = '<p>⚫️</p>'; // Black
+    _status = '<p>⚫️' + _data.toString() + '</p>'; // Black
   } else if (_data <= 0.5){
-    _status = '<p>🔴</p>'; // Red
+    _status = '<p>🔴' + _data.toString() + '</p>'; // Red
   } else if ((_data > 0.5) && (_data < 0.8)){
-    _status = '<p>🟡</p>'; // Yellow
+    _status = '<p>🟡' + _data.toString() + '</p>'; // Yellow
   } else {
-    _status = '<p>🟢</p>'; // Green
+    _status = '<p>🟢' + _data.toString() + '</p>'; // Green
   }
   return _status
 }
