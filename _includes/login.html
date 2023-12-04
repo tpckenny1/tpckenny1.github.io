@@ -20,8 +20,8 @@
 
     postData('https://script.google.com/macros/s/AKfycbz727bIm-dLV_d7CKxfP5j1EIV6I2zyQ6HgqyEVyxk3bDFxeB7eX8mlchKdN5Ioc59BJg/exec', 
       { 
-        accesskey: inputSchool,
-        school: inputAccesskey,
+        school: inputSchool,
+        accesskey: inputAccesskey,
         type: "login"
       }).then((respData) => {
         console.log(respData);
