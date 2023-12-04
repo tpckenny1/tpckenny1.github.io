@@ -61,9 +61,9 @@ function stripDate(isoDateString){
   return newIsoDateString
 }
 
-function reFillChart(sport="", name=""){
+function reFillChart(name=""){
   clearChart();
-  fillChart(sport, name);
+  fillChart(name);
 }
 
 function clearChart(){
@@ -75,7 +75,7 @@ function clearChart(){
   pctx.appendChild(ctx);
 }
 
-function fillChart(sport="", name=""){
+function fillChart(name=""){
 
   postData('https://script.google.com/macros/s/AKfycbz727bIm-dLV_d7CKxfP5j1EIV6I2zyQ6HgqyEVyxk3bDFxeB7eX8mlchKdN5Ioc59BJg/exec', 
   { 
@@ -83,7 +83,7 @@ function fillChart(sport="", name=""){
     school: getSchool(),
     type: "search_by_name",
     name: name,
-    sport: sport
+    sport: getSport()
   }).then((respData) => {
     // console.log(respData);
     let dates = respData['data'].slice(-30).map(i => stripDate(i.Date) );
