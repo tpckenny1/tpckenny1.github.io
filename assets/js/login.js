@@ -1,20 +1,3 @@
-// const btnLogin = document.getElementById("btn-login")
-// const inputSchool = document.getElementById("input-school")
-// const inputAccesskey = document.getElementById("input-accesskey")
-
-// btnSet.addEventListener("click", () => {
-//     setWithExpiry("accesskey", 
-//         {
-//             "school": inputSchool.value,
-//             "accesskey": inputAccesskey.value
-//         }, 
-//         5000)
-// })
-
-// btnGet.addEventListener("click", () => {
-//     const value = getWithExpiry("accesskey")
-//     console.log(value)
-// })
 
 function setWithExpiry(key, value, ttl) {
     const now = new Date()
@@ -50,7 +33,7 @@ function getWithExpiry(key) {
 }
 
 function getAccessKey() {
-    const itemStr = localStorage.getItem("accesskey")
+    const itemStr = localStorage.getItem("credential")
     // if the item doesn't exist, return null
     if ((itemStr === null) || (typeof itemStr === "undefined") || (itemStr === "")) {
         return ""
@@ -66,6 +49,23 @@ function getAccessKey() {
     return itemValue.accesskey
 }
 
+function getSchool() {
+    const itemStr = localStorage.getItem("credential")
+    // if the item doesn't exist, return null
+    if ((itemStr === null) || (typeof itemStr === "undefined") || (itemStr === "")) {
+        return ""
+    }
+    const item = JSON.parse(itemStr)
+    const itemValue = item.value
+    if ((itemValue === null) || (typeof itemValue === "undefined") || (itemValue === "")) {
+        return ""
+    }
+    if ((itemValue.school === null) || (typeof itemValue.school === "undefined") || (itemValue.school === "")) {
+        return ""
+    }
+    return itemValue.school
+}
+
 function findGetParameter(parameterName) {
     var result = null,
         tmp = [];
@@ -79,7 +79,7 @@ function findGetParameter(parameterName) {
 
 async function postData(url="", data={}) {
     // Check expired accesskey 
-    const value = getWithExpiry("accesskey")
+    const value = getWithExpiry("credential")
     console.log(value)
     if ((value === null) || (typeof value === "undefined") || (value === "")) { 
         window.location = "https://tpckenny1.github.io/docs/login/?retUrl=" + location.pathname;
