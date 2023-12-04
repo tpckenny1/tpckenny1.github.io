@@ -1,6 +1,6 @@
 ---
 layout: default
-title: HighSchool DataTables
+title: Players DataTables
 ---
 
 <!-- Page Heading -->

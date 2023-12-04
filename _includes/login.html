@@ -25,8 +25,8 @@
         type: "login"
       }).then((respData) => {
         console.log(respData);
-        schoolFullname = respData['schoolFullname'];
-        sport = respData['sport'];
+        schoolFullname = respData['data']['schoolFullname'];
+        sport = respData['data']['sport'];
         setWithExpiry("credential", 
           {
             "school": inputSchool,
