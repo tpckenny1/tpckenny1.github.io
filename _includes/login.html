@@ -25,14 +25,15 @@
         type: "login"
       }).then((respData) => {
         console.log(respData);
+        retUrl = findGetParameter("retUrl")
+        console.log(retUrl)
+        if ((retUrl === null) || (typeof retUrl === "undefined") || (retUrl === "")) { 
+          window.location = "https://tpckenny1.github.io/docs/players/";
+        } else {
+          window.location = "https://tpckenny1.github.io" + retUrl;
+        }
       });
-    retUrl = findGetParameter("retUrl")
-    console.log(retUrl)
-    if ((retUrl === null) || (typeof retUrl === "undefined") || (retUrl === "")) { 
-      window.location = "https://tpckenny1.github.io/docs/players/";
-    } else {
-      window.location = "https://tpckenny1.github.io" + retUrl;
-    }
+    
   }
   
   function setkey(school, accesskey){
