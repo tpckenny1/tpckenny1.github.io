@@ -7,13 +7,23 @@
     <input type="text" id="input-school" placeholder="Enter School" name="school" required>
     <label for="psw"><b>Password</b></label>
     <input type="password" id="input-accesskey" placeholder="Enter Accesskey" name="psw" required>
-    <button type="submit" class="btn-login" onclick="setkey()">Login</button>
+    <button type="submit" class="btn-login" onclick="setkey()">login()</button>
   </form>
 </div>
 <script>
+  function login(){
+    let rerUrl = null;
+    setkey();
+    retUrl = findGetParameter("retUrl")
+    console.log(retUrl)
+    if ((retUrl === null) || (typeof retUrl === "undefined") || (retUrl === "")) { 
+      window.location = "https://tpckenny1.github.io/";
+    } else {
+      window.location = "https://tpckenny1.github.io" + retUrl;
+    }
+  }
   
   function setkey(){
-    let rerUrl = null;
     let inputSchool = document.getElementById("input-school")
     let inputAccesskey = document.getElementById("input-accesskey")
     
@@ -23,13 +33,6 @@
         "accesskey": inputAccesskey.value
       }, 
       600000)
-    retUrl = findGetParameter("retUrl")
-    console.log(retUrl)
-    if ((retUrl === null) || (typeof retUrl === "undefined") || (retUrl === "")) { 
-      window.location = "https://tpckenny1.github.io/";
-    } else {
-      window.location = "https://tpckenny1.github.io" + retUrl;
-    }
   }
 
 </script>
