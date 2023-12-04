@@ -17,6 +17,7 @@
     let inputAccesskey = document.getElementById("input-accesskey").value
     let schoolFullname = null;
     let sport = null;
+
     postData('https://script.google.com/macros/s/AKfycbz727bIm-dLV_d7CKxfP5j1EIV6I2zyQ6HgqyEVyxk3bDFxeB7eX8mlchKdN5Ioc59BJg/exec', 
       { 
         accesskey: inputSchool,
@@ -26,7 +27,14 @@
         console.log(respData);
         schoolFullname = respData['schoolFullname'];
         sport = respData['sport'];
-        setkey(inputSchool, inputAccesskey, schoolFullname, sport);
+        setWithExpiry("credential", 
+          {
+            "school": school,
+            "accesskey": accesskey, 
+            "schoolFullname": schoolFullname,
+            "sport": sport
+          }, 
+          600000)
         retUrl = findGetParameter("retUrl")
         console.log(retUrl)
         if ((retUrl === null) || (typeof retUrl === "undefined") || (retUrl === "")) { 
@@ -38,16 +46,6 @@
     
   }
   
-  function setkey(school, accesskey, schoolFullname, sport){
-    
-    setWithExpiry("credential", 
-      {
-        "school": school,
-        "accesskey": accesskey, 
-        "schoolFullname": schoolFullname,
-        "sport": sport
-      }, 
-      600000)
-  }
+
 
 </script>
