@@ -8,7 +8,7 @@ title: Players DataTables
 <script>
 $(document).ready(function(){
     schoolfullname = getSchoolFullname();
-    if ((schoolfullname === null) || (typeof schoolfullname === "undefined") || (schoolfullname === "")) { 
+    if ((schoolfullname !== null) & (typeof schoolfullname !== "undefined") & (schoolfullname !== "")) { 
         $(".h3, .mb-2, .text-gray-800").text(schoolfullname);
     }
 });
