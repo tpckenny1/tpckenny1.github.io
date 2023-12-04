@@ -66,6 +66,40 @@ function getSchool() {
     return itemValue.school
 }
 
+function getSport() {
+    const itemStr = localStorage.getItem("credential")
+    // if the item doesn't exist, return null
+    if ((itemStr === null) || (typeof itemStr === "undefined") || (itemStr === "")) {
+        return ""
+    }
+    const item = JSON.parse(itemStr)
+    const itemValue = item.value
+    if ((itemValue === null) || (typeof itemValue === "undefined") || (itemValue === "")) {
+        return ""
+    }
+    if ((itemValue.sport === null) || (typeof itemValue.sport === "undefined") || (itemValue.sport === "")) {
+        return ""
+    }
+    return itemValue.sport
+}
+
+function getSchoolFullname() {
+    const itemStr = localStorage.getItem("credential")
+    // if the item doesn't exist, return null
+    if ((itemStr === null) || (typeof itemStr === "undefined") || (itemStr === "")) {
+        return ""
+    }
+    const item = JSON.parse(itemStr)
+    const itemValue = item.value
+    if ((itemValue === null) || (typeof itemValue === "undefined") || (itemValue === "")) {
+        return ""
+    }
+    if ((itemValue.schoolFullname === null) || (typeof itemValue.schoolFullname === "undefined") || (itemValue.schoolFullname === "")) {
+        return ""
+    }
+    return itemValue.schoolFullname
+}
+
 function findGetParameter(parameterName) {
     var result = null,
         tmp = [];
