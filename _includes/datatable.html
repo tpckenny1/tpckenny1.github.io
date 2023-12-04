@@ -4,26 +4,15 @@
 <script src="{{ site.url }}{{ site.baseurl }}/assets/js/login.js"></script>
 <script>
 $(document).ready(function() {
-  fillDatatable("{{ include.sport }}", "{{ include.school }}", "")
+  fillDatatable("{{ include.sport }}", "")
 });
 
-// async function postData(url="", data={}) {
-//   const response = await fetch(url, {
-//     redirect: "follow",
-//     method: "POST",
-//     body: JSON.stringify(data),
-//     headers: {
-//       "Content-Type": "text/plain;charset=utf-8",
-//     },
-//   });
-//   return response.json();
-// }
 
 function overwriteDatatable(){
   let selected_date = $('#selected_date').val().toString(); 
   console.log(selected_date);
   destroyDatatable();
-  fillDatatable("{{ include.sport }}", "{{ include.school }}", selected_date)
+  fillDatatable("{{ include.sport }}", selected_date)
 }
 
 function destroyDatatable(){
@@ -44,11 +33,11 @@ function calcTrafficLightStatus(_data, _type, _row) {
   return _status
 }
 
-function fillDatatable(sport="", school="", date=""){
+function fillDatatable(sport="", date=""){
   postData('https://script.google.com/macros/s/AKfycbz727bIm-dLV_d7CKxfP5j1EIV6I2zyQ6HgqyEVyxk3bDFxeB7eX8mlchKdN5Ioc59BJg/exec', 
   { 
     accesskey: getAccessKey(),
-    school: school,
+    school: getSchool(),
     type: "search_by_date",
     date: date,
     sport: sport
@@ -58,7 +47,7 @@ function fillDatatable(sport="", school="", date=""){
       data: respData['data'],
       columns: [
         {data: 'Student Name', title: "Student Name", render: function (_data, _type, _row) {
-          return '<a href="javascript:reFillChart(\''+ sport +'\', \''+ school +'\', \''+ _data +'\');">'+ _data +'</a>'
+          return '<a href="javascript:reFillChart(\''+ sport +'\', \''+ _data +'\');">'+ _data +'</a>'
         }},
         {data: 'Readiness', title: "Readiness", render: calcTrafficLightStatus},
         {data: 'UpperBody Fatigue', title: "UpperBody Fatigue", render: calcTrafficLightStatus},
