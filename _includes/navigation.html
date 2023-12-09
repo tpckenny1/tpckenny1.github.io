@@ -1,7 +1,20 @@
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"></nav>
-        <!-- End of Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
 
+
+               <a class="gh-source" data-gh-source="github" href="{{ site.repo }}" title="Go to repository" data-md-state="done"><i class="fab fa-github fa-2x" style="margin-top:8px; float:left"></i>
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                  <i class="fa fa-bars"></i>
+                </button>
+		    <span style="margin-left:10px">{{ site.github_user }}/{{ site.github_repo }}</span><br>
+		  <em><li style="font-size:0.8rem; margin-left:10px;margin-right:5px;float:left;display:inline-block" id='stars'></li> <li style="font-size:0.8rem;float:left;display:inline-block" id="forks"></li></em></a>
+
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
 <script>
 $(document).ready(function() {
   var url = "https://api.github.com/search/repositories?q={{ site.github_user }}/{{ site.github_repo }}";
