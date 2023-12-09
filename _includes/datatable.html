@@ -43,22 +43,24 @@ function fillDatatable(date=""){
     sport: getSport()
   }).then((respData) => {
     console.log(respData); // JSON data parsed by `data.json()` call
-    $('#{{ include.title | slugify }}').DataTable({
-      data: respData['data'],
-      columns: [
-        {data: 'Student Name', title: "Student Name", render: function (_data, _type, _row) {
-          return '<a href="javascript:reFillChart(\''+ _data +'\');">'+ _data +'</a>'
-        }},
-        {data: 'Readiness', title: "Readiness", render: calcTrafficLightStatus},
-        {data: 'UpperBody Fatigue', title: "UpperBody Fatigue", render: calcTrafficLightStatus},
-        {data: 'Avg Fatigue', title: "Avg. Fatigue", render: calcTrafficLightStatus},
-        {data: 'Avg Stress', title: "Avg. Stress", render: calcTrafficLightStatus},
-        {data: 'Avg Muscle Soreness', title: "Avg. Muscle Soreness", render: calcTrafficLightStatus},
-        {data: 'Avg Sleep Status', title: "Avg. Sleep Status", render: calcTrafficLightStatus}
-          
-        ]
+    if (respData['data'].startsWith("error_msg") !== true){
+      $('#{{ include.title | slugify }}').DataTable({
+        data: respData['data'],
+        columns: [
+          {data: 'Student Name', title: "Student Name", render: function (_data, _type, _row) {
+            return '<a href="javascript:reFillChart(\''+ _data +'\');">'+ _data +'</a>'
+          }},
+          {data: 'Readiness', title: "Readiness", render: calcTrafficLightStatus},
+          {data: 'UpperBody Fatigue', title: "UpperBody Fatigue", render: calcTrafficLightStatus},
+          {data: 'Avg Fatigue', title: "Avg. Fatigue", render: calcTrafficLightStatus},
+          {data: 'Avg Stress', title: "Avg. Stress", render: calcTrafficLightStatus},
+          {data: 'Avg Muscle Soreness', title: "Avg. Muscle Soreness", render: calcTrafficLightStatus},
+          {data: 'Avg Sleep Status', title: "Avg. Sleep Status", render: calcTrafficLightStatus}
+            
+          ]
       });
-    });
+    }
+  });
 }
     
     
