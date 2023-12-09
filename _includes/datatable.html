@@ -43,7 +43,8 @@ function fillDatatable(date=""){
     sport: getSport()
   }).then((respData) => {
     console.log(respData); // JSON data parsed by `data.json()` call
-    if (respData['data'].startsWith("error_msg") !== true){
+    // if (respData['data'].startsWith("error_msg") !== true)){
+    if (Array.isArray(respData['data'])){
       $('#{{ include.title | slugify }}').DataTable({
         data: respData['data'],
         columns: [
