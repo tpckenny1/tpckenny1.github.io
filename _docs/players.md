@@ -4,7 +4,7 @@ title: Players DataTables
 ---
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">學校</h1>
+<h1 class="h3 mb-2 text-gray-800">登入資訊錯誤</h1>
 <script>
 $(document).ready(function(){
     schoolfullname = getSchoolFullname();
