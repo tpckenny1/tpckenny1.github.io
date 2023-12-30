@@ -48,15 +48,15 @@ function fillDatatable(date=""){
       $('#{{ include.title | slugify }}').DataTable({
         data: respData['data'],
         columns: [
-          {data: 'Student Name', title: "Student Name", render: function (_data, _type, _row) {
+          {data: 'Student Name', title: "學生姓名", render: function (_data, _type, _row) {
             return '<a href="javascript:reFillChart(\''+ _data +'\');">'+ _data +'</a>'
           }},
-          {data: 'Readiness', title: "Readiness", render: calcTrafficLightStatus},
-          {data: 'UpperBody Fatigue', title: "UpperBody Fatigue", render: calcTrafficLightStatus},
-          {data: 'Avg Fatigue', title: "Avg. Fatigue", render: calcTrafficLightStatus},
-          {data: 'Avg Stress', title: "Avg. Stress", render: calcTrafficLightStatus},
-          {data: 'Avg Muscle Soreness', title: "Avg. Muscle Soreness", render: calcTrafficLightStatus},
-          {data: 'Avg Sleep Status', title: "Avg. Sleep Status", render: calcTrafficLightStatus}
+          {data: 'Readiness', title: "準備狀態", render: calcTrafficLightStatus},
+          {data: 'UpperBody Fatigue', title: "上肢疲勞", render: calcTrafficLightStatus},
+          {data: 'Avg Fatigue', title: "整體疲勞感", render: calcTrafficLightStatus},
+          {data: 'Avg Stress', title: "整體壓力感", render: calcTrafficLightStatus},
+          {data: 'Avg Muscle Soreness', title: "肌肉痠痛", render: calcTrafficLightStatus},
+          {data: 'Avg Sleep Status', title: "睡眠品質", render: calcTrafficLightStatus}
             
           ]
       });
